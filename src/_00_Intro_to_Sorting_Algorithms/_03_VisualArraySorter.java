@@ -6,7 +6,7 @@ import processing.core.PApplet;
  * Goal: Create a program that sorts each rectangle by height!
  * 
  * 1. Create an array of ints. Do not initialize it.
- *
+ 
  *In the settings() method:
  * 2. Set the size of your window to at least 500 width 500 height
  * 
@@ -40,22 +40,40 @@ import processing.core.PApplet;
 public class _03_VisualArraySorter extends PApplet {
     static final int WIDTH = 600;
     static final int HEIGHT = 400;
-
+    int[] nums;
     @Override
+    
+   
     public void settings() {
-        
+        size(500, 500);
     }
 
     @Override
     public void setup() {
-        
+        nums = new int[50];
+        for(int r : nums) {
+        nums[r] = (int)random(height);
+        }
+        noStroke();
     }
 
     @Override
     public void draw() {
-        
+        background(220, 220, 220);
+        fill(0, 0, 0);
+        for(int i : nums) {
+        rect(i * width/nums.length, HEIGHT, width/nums.length, -nums[i]);
+        }
+        stepSort(nums);
+        if(mousePressed == true) {
+        	randomInts(nums);
+        }
     }
-
+    public void randomInts(int[] arr) {
+    	for(int r : arr) {
+            arr[r] = (int)random(height);
+            }
+    }
     static public void main(String[] passedArgs) {
         PApplet.main(_03_VisualArraySorter.class.getName());
     }
