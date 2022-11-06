@@ -45,6 +45,63 @@ public class Algorithms {
     	return isCube;
     }
     public static int findBrokenEgg(List<String> eggs) {
-        return 0;
+        int brokenIndex = -1;
+    	for(int i = 0; i < eggs.size(); i++) {
+        	if(eggs.get(i).equalsIgnoreCase("cracked")) {
+        		if(brokenIndex == -1) {
+        			brokenIndex = i;
+        		}
+        	}
+        }
+    	return brokenIndex;
+    }
+    public static int countPearls(List<Boolean> oysters) {
+    	int pearls = 0;
+    	for(int i = 0; i < oysters.size(); i++) {
+    		if(oysters.get(i)) {
+    			pearls++;
+    		}
+    	}
+    	return pearls;
+    }
+    public static double findTallest(List<Double> peeps) {
+    	double tallestHeight = 0;
+    	for(int i = 0; i < peeps.size(); i++) {
+    		if(peeps.get(i) > tallestHeight) {
+    			tallestHeight = peeps.get(i);
+    		}
+    	}
+    	return tallestHeight;
+    }
+    public static String findLongestWord(List<String> words) {
+    	String longWord = "";
+    	for(int i = 0; i < words.size(); i++) {
+    		if(words.get(i).length() > longWord.length()) {
+    			longWord = words.get(i);
+    		}
+    	}
+    	return longWord;
+    }
+    public static Boolean containsSOS(List<String> message) {
+    	boolean sos = false;
+    	for(int i = 0; i < message.size(); i++) {
+    		if(message.get(i).equalsIgnoreCase("... --- ...")) {
+    			sos = true;
+    		}
+    	}
+    	return sos;
+    }
+    public static List<Double> sortScores(List<Double> results) {
+    	List<Double> sample = results;
+    	for(int i = 0; i < sample.size(); i++) {
+    	for(int k = 0; k < sample.size() - 1; k++) {
+    		if(results.get(k) > sample.get(k+1)) {
+    			double temp = sample.get(k);
+    			sample.get(k) = sample.get(k+1);
+    			sample.get(k+1) = temp;
+    		}
+    	}
+    	}
+    	return sample;
     }
 }
