@@ -95,12 +95,39 @@ public class Algorithms {
     	List<Double> sample = results;
     	for(int i = 0; i < sample.size(); i++) {
     	for(int k = 0; k < sample.size() - 1; k++) {
-    		if(results.get(k) > sample.get(k+1)) {
+    		if(sample.get(k) > sample.get(k+1)) {
     			double temp = sample.get(k);
-    			sample.get(k) = sample.get(k+1);
-    			sample.get(k+1) = temp;
+    			sample.set(k, sample.get(k+1));
+    			sample.set(k+1, temp);
     		}
     	}
+    	}
+    	return sample;
+    }
+    
+    public static List<String> sortDNA(List<String> unsortedSequences) {
+    	List<String> sample = unsortedSequences;
+    	for(int i = 0; i < sample.size(); i++) {
+    		for(int k = 0; k < sample.size() - 1; k++) {
+    			if(sample.get(k).length() > sample.get(k+1).length()) {
+    				String temp = sample.get(k);
+    				sample.set(k, sample.get(k+1));
+    				sample.set(k+1, temp);
+    			}
+    		}
+    	}
+    	return sample;
+    }
+    public static List<String> sortWords(List<String> words) {
+    	List<String> sample = words;
+    	for(int i = 0; i < sample.size(); i++) {
+    		for(int k = 0; k < sample.size() - 1; k++) {
+    			if(sample.get(k).compareTo(sample.get(k+1)) > 0) {
+    				String temp = sample.get(k);
+    				sample.set(k, sample.get(k+1));
+    				sample.set(k+1, temp);
+    			}
+    		}
     	}
     	return sample;
     }
